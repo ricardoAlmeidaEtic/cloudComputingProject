@@ -2,9 +2,12 @@ provider "kubernetes" {
   alias       = "cluster"
   config_path = "~/.kube/config"
 }
-resource "kubernetes_namespace" "my-cluster" {
-  provider = kubernetes.cluster
-  metadata {
-    name = "namespace-cluster"
-  }
+
+resource "minikube_cluster" "my-cluster" {
+    cluster_name="etic-cluster"
+    driver="docker"
+    nodes=2
+    addons=[
+        "ingress"
+    ]
 }
