@@ -1,4 +1,4 @@
 client   = "rockstar"
-environment   = "prod"
+environment   = ["dev", "qa", "prod"]
 replicas = 3
 domain   = "rockstar.com"

@@ -1,4 +1,4 @@
 client   = "meta"
-environment   = "prod"
+environment   = ["dev", "qa", "prod"]
 replicas = 3
 domain   = "meta.com"

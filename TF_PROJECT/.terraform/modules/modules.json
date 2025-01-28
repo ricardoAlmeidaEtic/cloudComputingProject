@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ingress","Source":"./modules/ingress","Dir":"modules/ingress"},{"Key":"kubernetes_cluster","Source":"./modules/kubernetes_cluster","Dir":"modules/kubernetes_cluster"},{"Key":"odoo","Source":"./modules/odoo","Dir":"modules/odoo"},{"Key":"postgres","Source":"./modules/postgres","Dir":"modules/postgres"}]}
