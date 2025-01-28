@@ -1,22 +1,22 @@
-# terraform {
-#   required_providers {
-#     minikube = {
-#       source = "scott-the-programmer/minikube"
-#       version = ">= 0.4.4"
-#     }
-#     kubernetes = {
-#       source = "hashicorp/kubernetes"
-#       version = ">= 2.11.0"
-#     }
-#     tls = {
-#       source = "hashicorp/tls"
-#       version = "3.0"
-#     }
-#   }
-# }
+terraform {
+  required_providers {
+    minikube = {
+      source  = "scott-the-programmer/minikube"
+      version = "0.4.4"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.11.0"
+    }
+    tls = {
+      source  = "hashicorp/tls"
+      version = "~> 3.0"
+    }
+  }
+}
 
 provider "minikube" {
-  # Configuration options for minikube provider
+  # Configuration options for the minikube provider (if any)
 }
 
 provider "kubernetes" {
@@ -27,5 +27,5 @@ provider "kubernetes" {
 }
 
 provider "tls" {
-  # Configuration options for tls provider
+  # Configuration options for the tls provider
 }
