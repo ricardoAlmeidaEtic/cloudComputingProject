@@ -4,7 +4,11 @@ variable "environment" {
 }
 
 variable "database_host" {
-  description = "PostgreSQL database host"
+  description = "The hostname of the database"
   type        = string
-  default     = "postgres-service"  # Default to Kubernetes service name
+}
+
+variable "odoo_service_name" {
+  description = "Odoo service name"
+  type        = string
 }

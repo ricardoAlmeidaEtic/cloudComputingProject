@@ -1,9 +1,3 @@
-variable "kubeconfig_path" {
-  description = "Path to the Kubernetes config file"
-  type        = string
-  default     = "~/.kube/config"
-}
-
 variable "environment" {
   description = "Deployment environment (dev, qa, prod)"
   type        = string

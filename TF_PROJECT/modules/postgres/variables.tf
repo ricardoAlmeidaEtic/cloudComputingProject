@@ -14,3 +14,7 @@ variable "db_password" {
   type        = string
   default     = "securepassword"
 }
+
+output "db_host" {
+  value = kubernetes_service.postgres.metadata[0].name
+}

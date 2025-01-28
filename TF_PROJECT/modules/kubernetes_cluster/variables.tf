@@ -3,3 +3,8 @@ variable "namespace_names" {
   type        = list(string)
   default     = ["dev", "qa", "prod"]
 }
+
+variable "odoo_service_name" {
+  description = "Name of the Odoo service"
+  type        = string
+}
