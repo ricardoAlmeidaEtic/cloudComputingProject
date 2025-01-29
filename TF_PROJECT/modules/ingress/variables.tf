@@ -1,26 +1,15 @@
-variable "environment" {
-  description = "Deployment environment (dev, qa, prod)"
-  type        = string
+variable "client_name" {
+    description = "Name of the client"
+    type        = string
 }
 
-variable "domain" {
-  description = "The domain name for the application"
-  type        = string
+variable "namespace" {
+    description = "Kubernetes namespace"
+    type        = string
 }
 
-variable "key_path" {
-  description = "Path to the key file"
-  type        = string
-  default = "private.key"
-}
-
-variable "certificate_path" {
-  description = "Path to the SSL certificate file"
-  type        = string
-  default = "certificate.crt"
-}
-
-variable "odoo_service_name" {
-  description = "Name of the Odoo service"
-  type        = string
+variable "enable_https" {
+    description = "Enable HTTPS for ingress"
+    type        = bool
+    default     = true
 }

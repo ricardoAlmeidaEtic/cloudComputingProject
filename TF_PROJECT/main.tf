@@ -1,32 +1,34 @@
-module "kubernetes_cluster" {
-  source = "./modules/kubernetes_cluster"
-  odoo_service_name = module.odoo.kubernetes_service_name
+provider "kubernetes" {
+  config_path = "~/.kube/config"  # Path to your kubeconfig file
+}
+
+module "kubernetes" {
+  source      = "./modules/kubernetes"
+  client_name = var.client_name
+}
+
+module "namespaces" {
+  source       = "./modules/namespaces"
+  client_name  = var.client_name
+  environments = var.environments
+}
+
+# Other modules should reference namespaces from the namespaces module
+module "odoo" {
+  source      = "./modules/odoo"
+  client_name = var.client_name
+  namespace   = module.namespaces.namespace  # Reference correct output
 }
 
 module "postgres" {
-  source = "./modules/postgres"
-  environment = var.environment
+  source      = "./modules/postgres"
+  client_name = var.client_name
+  namespace   = module.namespaces.namespace
 }
-
-module "odoo" {
-  source         = "./modules/odoo"
-  environment    = var.environment
-  database_host  = module.postgres.db_host
-  odoo_service_name = module.odoo.kubernetes_service_name
-}
-
 
 module "ingress" {
-  source            = "./modules/ingress"
-  domain            = var.domain
-  environment       = var.environment
-  certificate_path  = var.certificate_path
-  key_path          = var.key_path
-  odoo_service_name = module.odoo.kubernetes_service_name
-}
-
-resource "kubernetes_namespace" "namespace" {
-  metadata {
-    name = "${var.client}-${var.environment}"
-  }
+  source      = "./modules/ingress"
+  client_name = var.client_name
+  namespace   = module.namespaces.namespace
+  enable_https = var.enable_https
 }

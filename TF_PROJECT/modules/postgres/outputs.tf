@@ -1,3 +1,3 @@
-output "postgres_service_name" {
-  value = kubernetes_service.postgres.metadata[0].name
+output "service_url" {
+  value = "postgres://${var.client_name}-postgres:5432/odoo"
 }

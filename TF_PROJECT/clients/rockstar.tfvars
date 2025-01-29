@@ -1,4 +1,2 @@
-client   = "rockstar"
-environment   = ["dev", "qa", "prod"]
-replicas = 3
-domain   = "rockstar.com"
+client_name = "Rockstar"
+enable_https = true

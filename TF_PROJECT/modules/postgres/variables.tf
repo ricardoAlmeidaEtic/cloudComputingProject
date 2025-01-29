@@ -1,20 +1,5 @@
-variable "environment" {
-  description = "Deployment environment (dev, qa, prod)"
-  type        = string
+variable "client_name" {
+    description = "Name of the client"
+    type        = string
 }
-
-variable "db_user" {
-  description = "Postgres username"
-  type        = string
-  default     = "odoo"
-}
-
-variable "db_password" {
-  description = "Postgres password"
-  type        = string
-  default     = "securepassword"
-}
-
-output "db_host" {
-  value = kubernetes_service.postgres.metadata[0].name
-}
+variable "namespace" {}

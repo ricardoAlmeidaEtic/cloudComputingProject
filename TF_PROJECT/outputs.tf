@@ -1,4 +1,8 @@
-output "ingress_url" {
-  description = "Ingress URL for the deployed application"
-  value       = module.ingress.url
+
+output "odoo_service_url" {
+  value = module.ingress.service_url
+}
+
+output "postgres_service_url" {
+  value = module.postgres.service_url
 }

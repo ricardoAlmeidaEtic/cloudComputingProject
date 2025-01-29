@@ -1,15 +1,31 @@
-resource "kubernetes_service" "postgres" {
+resource "kubernetes_deployment" "postgres" {
   metadata {
-    name      = "postgres-service"
-    namespace = var.environment
+    name      = "postgres"
+    namespace = var.namespace
   }
+
   spec {
-    selector = {
-      app = "postgres"
+    replicas = 1
+
+    selector {
+      match_labels = {
+        app = "postgres"
+      }
     }
-    port {
-      port        = 5432
-      target_port = 5432
+
+    template {
+      metadata {
+        labels = {
+          app = "postgres"
+        }
+      }
+
+      spec {
+        container {
+          name  = "postgres"
+          image = "postgres:latest"
+        }
+      }
     }
   }
 }
