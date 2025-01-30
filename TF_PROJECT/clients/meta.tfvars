@@ -1,2 +1,4 @@
-client_name = "Meta"
-enable_https = true
+client   = "meta"
+environment   = "dev"
+replicas = 3
+domain   = "meta-example.com"

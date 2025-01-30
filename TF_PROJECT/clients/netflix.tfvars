@@ -1,2 +1,4 @@
-client_name = "Netflix"
-enable_https = true
+client   = "netflix"
+environment   = "dev"
+replicas = 3
+domain   = "netflix-example.com"
