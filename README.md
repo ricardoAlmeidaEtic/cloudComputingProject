@@ -1,2 +1,58 @@
-# cloudComputingProject
-Final Project Development for "CLOUD COMPUTING"
+Here’s a revised version of your markdown:
+
+---
+
+# Terraform Project for Multi-Client Deployment
+
+This project automates the deployment of a Kubernetes cluster and the Odoo application for multiple clients, such as Netflix, Meta, and Rockstar.
+
+## Prerequisites
+- Terraform
+- Minikube
+- kubectl
+
+## Deployment Instructions
+
+1. **Start Minikube**:  
+   Ensure a Minikube profile is created for your client. Terraform can automatically handle this if configured.
+   ```bash
+   minikube start
+   ```
+
+2. **Apply the Cert-Manager**:  
+   Install the cert-manager by applying the YAML configuration.
+   ```bash
+   kubectl apply -f cert-manager.yaml
+   ```
+
+3. **Enable Ingress Addon**:  
+   Enable the Ingress addon in Minikube.
+   ```bash
+   minikube addons enable ingress
+   ```
+
+4. **Initialize Terraform**:  
+   Initialize Terraform in your project.
+   ```bash
+   terraform init
+   ```
+
+5. **Create a New Workspace for Each Cluster**:  
+   Create a workspace for each new client cluster you wish to deploy.
+   ```bash
+   terraform workspace new netflix-prod
+   ```
+
+6. **Apply Terraform Configuration**:  
+   Deploy the infrastructure for the selected client by specifying the correct `.tfvars` file.
+   ```bash
+   terraform apply -var-file=clients/netflix.tfvars
+   ```
+   Alternatively, you can modify any default values by adding extra variables:
+   ```bash
+   terraform apply -var-file=clients/netflix.tfvars -var="replica_count=1" -var="qa"
+   ```
+   You will be prompted to enter any missing variables, such as the namespace and the profile name.
+
+7. **Access the Odoo Application**:  
+   Once the deployment is complete, access the Odoo application by navigating to `https://<domain-name>`, replacing `<domain-name>` with the domain specified in the corresponding `.tfvars` file.
