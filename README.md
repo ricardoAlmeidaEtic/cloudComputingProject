@@ -40,17 +40,17 @@ This project automates the deployment of a Kubernetes cluster and the Odoo appli
 5. **Create a New Workspace for Each Cluster**:  
    Create a workspace for each new client cluster you wish to deploy.
    ```bash
-   terraform workspace new netflix-prod
+   terraform workspace new meta-prod
    ```
 
 6. **Apply Terraform Configuration**:  
    Deploy the infrastructure for the selected client by specifying the correct `.tfvars` file.
    ```bash
-   terraform apply -var-file=clients/netflix.tfvars
+   terraform apply -var-file=clients/meta.tfvars
    ```
    Alternatively, you can modify any default values by adding extra variables:
    ```bash
-   terraform apply -var-file=clients/netflix.tfvars -var="replica_count=1" -var="qa"
+   terraform apply -var-file=clients/meta.tfvars
    ```
    You will be prompted to enter any missing variables, such as the namespace and the profile name.
 
