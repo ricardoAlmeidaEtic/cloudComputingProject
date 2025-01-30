@@ -1,5 +1,3 @@
-Here’s a revised version of your markdown:
-
 ---
 
 # Terraform Project for Multi-Client Deployment
