@@ -48,11 +48,6 @@ This project automates the deployment of a Kubernetes cluster and the Odoo appli
    ```bash
    terraform apply -var-file=clients/meta.tfvars
    ```
-   Alternatively, you can modify any default values by adding extra variables:
-   ```bash
-   terraform apply -var-file=clients/meta.tfvars
-   ```
-   You will be prompted to enter any missing variables, such as the namespace and the profile name.
 
 7. **Access the Odoo Application**:  
    Once the deployment is complete, access the Odoo application by navigating to `https://<domain-name>`, replacing `<domain-name>` with the domain specified in the corresponding `.tfvars` file.
